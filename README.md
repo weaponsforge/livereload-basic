@@ -5,10 +5,10 @@
 
 ### Content
 
-- Dependencies
-- Installation
-- Usage
-- References
+- [Dependencies](#dependencies)
+- [Installation](#nstallation)
+- [Usage](#usage)
+- [References](#references)
 
 
 ### Dependencies
