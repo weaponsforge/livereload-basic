@@ -8,6 +8,7 @@
 - Dependencies
 - Installation
 - Usage
+- References
 
 
 ### Dependencies
@@ -17,7 +18,7 @@ The following dependecies are used for this project. Feel free to experiment usi
 1. Windows 64-bit OS
 2. NodeJS
 	- node version 12.16.3
-	- npm versio 6.14.4
+	- npm version 6.14.4
 3. NodeJS modules (installed via npm)
 	- gulp v.4.0.2
 	- browser-sync v.2.26.7
@@ -47,6 +48,11 @@ The following dependecies are used for this project. Feel free to experiment usi
 
 4. Run the production static website (does not use live reload).  
 `npm run start`
+
+
+## References
+
+[[1]](https://github.com/ciatph/webtools) - live reload using gulp v.3.9.1 (older gulp version)
 
 @weaponsforge  
 20200630
