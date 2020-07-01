@@ -1,6 +1,6 @@
 ## livereload-basic
 
-> Localhost static website development environment for html, css and javascript files with live reload.  
+> Localhost static website development environment for plain html, css and javascript files with live reload.  
 > Uses **gulp** + **browser-sync**.
 
 
