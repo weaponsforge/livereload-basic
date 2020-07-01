@@ -1,6 +1,7 @@
 ## livereload-basic
 
-> Localhost static website development environment for html, css and javascript files with live reload.
+> Localhost static website development environment for html, css and javascript files with live reload.  
+> Uses **gulp** + **browser-sync**.
 
 
 ### Content
@@ -52,7 +53,8 @@ The following dependecies are used for this project. Feel free to experiment usi
 
 ## References
 
-[[1]](https://github.com/ciatph/webtools) - live reload using gulp v.3.9.1 (older gulp version)
+[[1]](https://github.com/ciatph/webtools) - live reload using gulp v.3.9.1 (older gulp version)  
+[[2]](https://trello.com/c/gFN68i6k) - gulp notes (trello)
 
 @weaponsforge  
 20200630
