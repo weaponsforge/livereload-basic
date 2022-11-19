@@ -22,8 +22,8 @@
   },
   "homepage": "https://github.com/weaponsforge/livereload-basic#readme",
   "devDependencies": {
-    "browser-sync": "^2.27.5",
-    "express": "^4.17.1",
+    "browser-sync": "^2.27.10",
+    "express": "^4.18.2",
     "gulp": "^4.0.2"
   }
 }
