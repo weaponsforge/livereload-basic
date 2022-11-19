@@ -17,11 +17,12 @@
 The following dependecies are used for this project. Feel free to experiment using other dependencies and versions.
 
 1. Windows 64-bit OS
-2. yarn v1.22.19
-3. nvm version 1.1.9 (for Windows)
+2. nvm version 1.1.9 (for Windows)
 3. NodeJS 16.14.2 installed using nvm
    - node v16.14.2
    - npm v8.5.0
+4. yarn v1.22.19
+   - installed using NodeJS
 3. NodeJS modules (installed using yarn)
 	- gulp v.4.0.2
 	- browser-sync v.2.27.10
