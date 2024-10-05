@@ -112,7 +112,7 @@ The **production** Docker image contains the static website running in an nginx 
 
 > Debugging regular (traditional) web apps with VSCode is similar to debugging and adding breakpoints from the Chrome or Edge browser's **Sources** tab.
 
-> [!INFO]
+> [!TIP]
 > Take note of its VSCode launch settings with a `"pathMapping"` key. It is quite similar to the VSCode launch settings of [web apps launched with Webpack](https://github.com/weaponsforge/livereload-webpack#other-notes).
 
 1. Add breakpoints in the JavaScript (`*.js`) files inside the website's directory entry point at the `"public/"` directory.
