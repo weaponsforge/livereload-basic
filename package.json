@@ -1,7 +1,7 @@
 {
   "name": "livereload-basic",
   "version": "1.0.0",
-  "description": "Localhost static website development environment for html, css and javascript files with live reload using Gulp",
+  "description": "Simple localhost static website development environment for HTML, CSS and JavaScript files with live reload using Gulp and Browser-Sync",
   "main": "server.js",
   "engines": {
     "node": "20.15.0",
