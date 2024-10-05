@@ -1,29 +1,30 @@
 {
   "name": "livereload-basic",
   "version": "1.0.0",
-  "description": "Localhost static website development environment for html, css and javascript files with live reload.",
-  "main": "index.js",
+  "description": "Simple localhost static website development environment for HTML, CSS and JavaScript files with live reload using Gulp and Browser-Sync",
+  "main": "server.js",
+  "engines": {
+    "node": "20.15.0",
+    "npm": "10.7.0"
+  },
   "scripts": {
     "start": "node server.js",
     "dev": "./node_modules/.bin/gulp dev"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/weaponsforge/livereload-basic.git"
   },
   "keywords": [
     "gulp",
     "live-reload"
   ],
+  "repository": "https://github.com/weaponsforge/livereload-basic",
   "author": "weaponsforge",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/weaponsforge/livereload-basic/issues"
   },
   "homepage": "https://github.com/weaponsforge/livereload-basic#readme",
   "devDependencies": {
-    "browser-sync": "^2.27.10",
-    "express": "^4.18.2",
-    "gulp": "^4.0.2"
+    "browser-sync": "^3.0.3",
+    "express": "^4.21.0",
+    "gulp": "^5.0.0"
   }
 }
