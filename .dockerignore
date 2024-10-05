@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.vscode
+.git
+.gitignore
+.dockerignore
+Dockerfile
+*.zip
+*.rar
+*.txt
+*.yml

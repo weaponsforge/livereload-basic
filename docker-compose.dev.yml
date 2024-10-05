@@ -1,0 +1,15 @@
+services:
+  weaponsforge.livereload-basic:
+    container_name: weaponsforge-localhost-basic
+    image: weaponsforge/livereload-basic:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+    volumes:
+      - .:/opt/app
+      - /opt/app/node_modules
+    ports:
+      - "3000:3000"
+      - "9229:9229"
+
