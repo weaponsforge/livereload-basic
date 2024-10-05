@@ -1,0 +1,18 @@
+services:
+  weaponsforge.livereload-basic:
+    container_name: weaponsforge-localhost-basic
+    image: weaponsforge/livereload-basic:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+    volumes:
+      - .:/opt/app
+      - /opt/app/node_modules
+    ports:
+      - "3000:3000"
+      - "9229:9229"
+    # Enable USE_POLLING if working in Windows WSL2 to enable hot reload
+    environment:
+      - IS_DOCKER=true
+      # - USE_POLLING=true
