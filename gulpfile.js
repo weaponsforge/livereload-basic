@@ -18,7 +18,7 @@ const watch = function () {
   const css = `${root}/**/*.css`
   const js = `${root}/**/*.js`
 
-  // Use gulp internal and polling if working in Windows WSL2 to enable hot reload
+  // Use gulp interval and polling if working in Windows WSL2 to enable hot reload
   gulp.watch(html,
     (process.env.USE_POLLING && { interval: 1000, usePolling: true })
   ).on('change', browserSync.reload)
