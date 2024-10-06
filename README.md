@@ -2,7 +2,11 @@
 
 Simple localhost static website development environment for plain HTML, CSS, and JavaScript files with live reload.
 
-Its development and static hosting and file-serving architecture are closer to traditional static web servers. Uses **Gulp** and **Browser-Sync**
+Its development static hosting and file-serving architecture are closer to traditional static web servers. Uses **Gulp** and **Browser-Sync**
+
+> [!NOTE]
+> An alternate localhost static development environment, also  with live reload using Webpack is available at<br>
+> https://github.com/weaponsforge/livereload-webpack
 
 ### Content
 
@@ -11,8 +15,10 @@ Its development and static hosting and file-serving architecture are closer to t
 - [Usage](#usage)
 - [Available Scripts](#available-scripts)
 - [Usage with Docker](#usage-with-docker)
+   - [Using the Pre-Built Docker Image](#using-the-pre-built-docker-image)
    - [Local-Built Development Image](#local-built-development-image)
 - [Building Docker Images](#building-docker-images)
+- [Deployment with GitHub Actions](#deployment-with-github-actions)
 - [Debugging Notes](#debugging-notes)
    - [Debugging Traditional Web Apps in VSCode](#debugging-traditional-webapps-in-vscode)
 - [References](#references)
@@ -72,6 +78,48 @@ Starts a simple ExpressJS web server serving the static website app from its sta
 
 ## Usage with Docker
 
+### Using the Pre-Built Docker Image
+
+This project deploys the latest **development** Docker image to Docker Hub on the creation of new Release/Tags. It is available at:
+
+https://hub.docker.com/r/weaponsforge/livereload-basic
+
+1. Pull the pre-built development Docker image using any of the two (2) options:
+   - Open a terminal and run:<br>
+	 `docker pull weaponsforge/livereload-basic:latest`
+   - Navigate to the livereload-basic root project directory, then run:<br>
+	 `docker compose -f docker-compose.dev.yml pull`
+
+2. Run the development image.
+   - Using only Docker (1st option):
+	    > **INFO:** This option requires having the static website development HTML, CSS and JavaScript files inside a "/public" directory, consisting of at least:
+
+		```
+		├─ my-website-project
+		│   ├─ public
+		│   ├─── index.html
+		│   ├─── ...
+		```
+
+		```
+		# On Linux OS
+		docker run -it --rm -p 3000:3000 -v $(pwd)/public:/opt/app/public -e IS_DOCKER=true weaponsforge/livereload-basic:latest
+
+		# On Windows OS
+		docker run -it --rm -p 3000:3000 -v %cd%\public:/opt/app/public -e USE_POLLING=true -e IS_DOCKER=true weaponsforge/livereload-basic:latest
+		```
+
+	- Using Docker compose (2nd option):<br>
+	    - `docker compose -f docker-compose.dev.yml up`
+      - > **INFO:** Uncomment the following lines in the `docker-compose.dev.yml` file when working in a Windows host.
+         ```
+         # Enable USE_POLLING if working in Windows WSL2 to enable hot reload
+          environment:
+            - IS_DOCKER=true
+            - USE_POLLING=true
+         ```
+3. Refer to the [Usage](#usage) section steps **# 2 - # 4** for local development.
+
 ### Local-Built Development Image
 
 1. Build the Docker image for local development.
@@ -91,7 +139,7 @@ Starts a simple ExpressJS web server serving the static website app from its sta
 
 ### Development Image
 
-The **development** Docker image contains Node runtime, Gulp, Browser-Sync and yarn dependencies, and the latest repository source codes for local development. Build it with:
+The **development** Docker image contains Node runtime, Gulp, Browser-Sync and Yarn dependencies, and the latest repository source codes for local development. Build it with:
 
 `docker compose -f docker-compose.dev.yml build`
 
@@ -100,6 +148,25 @@ The **development** Docker image contains Node runtime, Gulp, Browser-Sync and y
 The **production** Docker image contains the static website running in an nginx container for minimal production website build. Build it with:
 
 `docker compose -f docker-compose.prod.yml build`
+
+## Deployment with GitHub Actions
+
+This repository deploys the **local development** Docker image to Docker Hub on the creation of new Release/Tags.
+
+Add the following GitHub Secrets and Variables to enable deployment to Docker Hub.
+
+#### GitHub Secrets
+
+| GitHub Secret | Description |
+| --- | --- |
+| DOCKERHUB_USERNAME | (Optional) Docker Hub username. Required to enable pushing the development image to Docker Hub. |
+| DOCKERHUB_TOKEN | (Optional) Deploy token for the Docker Hub account. Required to enable pushing the development image to Docker Hub. |
+
+#### GitHub Variables
+
+| GitHub Variable | Description |
+| --- | --- |
+| DOCKERHUB_USERNAME | (Optional) Docker Hub username. Required to enable pushing the development image to Docker Hub. |
 
 ## Debugging Notes
 
@@ -112,7 +179,7 @@ The **production** Docker image contains the static website running in an nginx 
 
 > Debugging regular (traditional) web apps with VSCode is similar to debugging and adding breakpoints from the Chrome or Edge browser's **Sources** tab.
 
-> [!TIP]
+> **TIP**<br>
 > Take note of its VSCode launch settings with a `"pathMapping"` key. It is quite similar to the VSCode launch settings of [web apps launched with Webpack](https://github.com/weaponsforge/livereload-webpack#other-notes).
 
 1. Add breakpoints in the JavaScript (`*.js`) files inside the website's directory entry point at the `"public/"` directory.
