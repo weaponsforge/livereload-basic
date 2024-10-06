@@ -2,6 +2,7 @@ node_modules/
 dist/
 .vscode
 .git
+.github
 .gitignore
 .dockerignore
 Dockerfile
