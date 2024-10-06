@@ -2,7 +2,7 @@
 
 Simple localhost static website development environment for plain HTML, CSS, and JavaScript files with live reload.
 
-Its development and static hosting and file-serving architecture are closer to traditional static web servers. Uses **Gulp** and **Browser-Sync**
+Its development static hosting and file-serving architecture are closer to traditional static web servers. Uses **Gulp** and **Browser-Sync**
 
 > [!NOTE]
 > An alternate localhost static development environment, also  with live reload using Webpack is available at<br>
@@ -139,7 +139,7 @@ https://hub.docker.com/r/weaponsforge/livereload-basic
 
 ### Development Image
 
-The **development** Docker image contains Node runtime, Gulp, Browser-Sync and yarn dependencies, and the latest repository source codes for local development. Build it with:
+The **development** Docker image contains Node runtime, Gulp, Browser-Sync and Yarn dependencies, and the latest repository source codes for local development. Build it with:
 
 `docker compose -f docker-compose.dev.yml build`
 
