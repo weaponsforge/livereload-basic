@@ -5,7 +5,7 @@ Simple localhost static website development environment for plain HTML, CSS, and
 Its development static hosting and file-serving architecture are closer to traditional static web servers. Uses **Gulp** and **Browser-Sync**
 
 > [!NOTE]
-> An alternate localhost static development environment, also  with live reload using Webpack is available at<br>
+> An alternate localhost static development environment using **Webpack**, also with live reload, is available at<br>
 > https://github.com/weaponsforge/livereload-webpack
 
 ### Content
@@ -92,7 +92,7 @@ https://hub.docker.com/r/weaponsforge/livereload-basic
 
 2. Run the development image.
    - Using only Docker (1st option):
-	    > **INFO:** This option requires having the static website development HTML, CSS and JavaScript files inside a "/public" directory, consisting of at least:
+	    > **INFO:** This option requires having the static website development HTML, CSS and JavaScript files inside a `"/public"` directory, consisting of at least:
 
 		```
 		├─ my-website-project
@@ -100,6 +100,7 @@ https://hub.docker.com/r/weaponsforge/livereload-basic
 		│   ├─── index.html
 		│   ├─── ...
 		```
+		Navigate to the website project directory (for example, `"my-website-project"`) using a terminal, then run:
 
 		```
 		# On Linux OS
