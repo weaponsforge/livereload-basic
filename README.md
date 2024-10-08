@@ -115,6 +115,9 @@ https://hub.docker.com/r/weaponsforge/livereload-basic
 		docker run -it --rm -p 3000:3000 -v %cd%\FILE_DIRECTORY:/opt/app/public -e USE_POLLING=true weaponsforge/livereload-basic:latest
 		```
 
+      > _**TIP:**<br>
+      > Replace `-p 3000:3000` with other port bindings as needed._
+
 	- Using Docker compose (2nd option):<br>
 	    - `docker compose -f docker-compose.dev.yml up`
       - > **INFO:** Uncomment the following lines in the `docker-compose.dev.yml` file when working in a Windows host.
