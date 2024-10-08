@@ -19,6 +19,7 @@ Its development static hosting and file-serving architecture are closer to tradi
    - [Local-Built Development Image](#local-built-development-image)
 - [Building Docker Images](#building-docker-images)
 - [Deployment with GitHub Actions](#deployment-with-github-actions)
+- [Deployment URLs](#deployment-urls)
 - [Debugging Notes](#debugging-notes)
    - [Debugging Traditional Web Apps in VSCode](#debugging-traditional-webapps-in-vscode)
 - [References](#references)
@@ -175,6 +176,15 @@ Add the following GitHub Secrets and Variables to enable deployment to Docker Hu
 | GitHub Variable | Description |
 | --- | --- |
 | DOCKERHUB_USERNAME | (Optional) Docker Hub username. Required to enable pushing the development image to Docker Hub. |
+
+## Deployment URLs
+
+**Docker Hub**<br>
+https://hub.docker.com/r/weaponsforge/livereload-basic
+
+**Live Preview (Sample Website)**<br>
+https://weaponsforge.github.io/livereload-basic/
+
 
 ## Debugging Notes
 
