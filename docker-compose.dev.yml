@@ -12,7 +12,6 @@ services:
     ports:
       - "3000:3000"
       - "9229:9229"
-    # Enable USE_POLLING if working in Windows WSL2 to enable hot reload
-    environment:
-      - IS_DOCKER=true
+    # Enable USE_POLLING if working in Windows WSL2 to enable live reload
+    # environment:
       # - USE_POLLING=true
