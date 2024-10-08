@@ -15,7 +15,7 @@ FROM base AS development
 RUN yarn install
 COPY . ./
 EXPOSE 3000
-CMD ["yarn", "dev"]
+CMD ["yarn", "dev:docker"]
 
 # BUILD TARGET
 FROM base AS build
