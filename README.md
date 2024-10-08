@@ -19,6 +19,7 @@ Its development static hosting and file-serving architecture are closer to tradi
    - [Local-Built Development Image](#local-built-development-image)
 - [Building Docker Images](#building-docker-images)
 - [Deployment with GitHub Actions](#deployment-with-github-actions)
+- [Deployment URLs](#deployment-urls)
 - [Debugging Notes](#debugging-notes)
    - [Debugging Traditional Web Apps in VSCode](#debugging-traditional-webapps-in-vscode)
 - [References](#references)
@@ -72,9 +73,14 @@ These steps use **Node** and **Yarn** to run the development app.
 
 Runs the Gulp and Browser-Sync tasks, launching the local website for development mode.
 
+### `npm run dev:docker`
+
+Sets the `IS_DOCKER=true` environment variable before running the Gulp and Browser-Sync tasks inside a Docker container. It doesn't launch the local website for development mode.
+> This command runs only in a Linux environment.
+
 ### `npm start`
 
-Starts a simple ExpressJS web server serving the static website app from its static middleware.
+Runs a simple ExpressJS web server serving the static website app using its static middleware.
 
 ## Usage with Docker
 
@@ -92,7 +98,7 @@ https://hub.docker.com/r/weaponsforge/livereload-basic
 
 2. Run the development image.
    - Using only Docker (1st option):
-	    > **INFO:** This option requires having the static website development HTML, CSS and JavaScript files inside a `"/public"` directory, consisting of at least:
+	    > **INFO:** This option requires having the static website development HTML, CSS, and JavaScript files inside a `FILE_DIRECTORY` directory in the host machine. This example uses a `FILE_DIRECTORY` named `"/public"`, which contains at least:
 
 		```
 		├─ my-website-project
@@ -100,23 +106,25 @@ https://hub.docker.com/r/weaponsforge/livereload-basic
 		│   ├─── index.html
 		│   ├─── ...
 		```
-		Navigate to the website project directory (for example, `"my-website-project"`) using a terminal, then run:
+		Navigate to the root project directory (for example, `"my-website-project"`) using a terminal, then run:
 
 		```
 		# On Linux OS
-		docker run -it --rm -p 3000:3000 -v $(pwd)/public:/opt/app/public -e IS_DOCKER=true weaponsforge/livereload-basic:latest
+		docker run -it --rm -p 3000:3000 -v $(pwd)/FILE_DIRECTORY:/opt/app/public weaponsforge/livereload-basic:latest
 
 		# On Windows OS
-		docker run -it --rm -p 3000:3000 -v %cd%\public:/opt/app/public -e USE_POLLING=true -e IS_DOCKER=true weaponsforge/livereload-basic:latest
+		docker run -it --rm -p 3000:3000 -v %cd%\FILE_DIRECTORY:/opt/app/public -e USE_POLLING=true weaponsforge/livereload-basic:latest
 		```
+
+      > _**TIP:**<br>
+      > Replace `-p 3000:3000` with other port bindings as needed._
 
 	- Using Docker compose (2nd option):<br>
 	    - `docker compose -f docker-compose.dev.yml up`
       - > **INFO:** Uncomment the following lines in the `docker-compose.dev.yml` file when working in a Windows host.
          ```
-         # Enable USE_POLLING if working in Windows WSL2 to enable hot reload
+         # Enable USE_POLLING if working in Windows WSL2 to enable live reload
           environment:
-            - IS_DOCKER=true
             - USE_POLLING=true
          ```
 3. Refer to the [Usage](#usage) section steps **# 2 - # 4** for local development.
@@ -168,6 +176,15 @@ Add the following GitHub Secrets and Variables to enable deployment to Docker Hu
 | GitHub Variable | Description |
 | --- | --- |
 | DOCKERHUB_USERNAME | (Optional) Docker Hub username. Required to enable pushing the development image to Docker Hub. |
+
+## Deployment URLs
+
+**Docker Hub**<br>
+https://hub.docker.com/r/weaponsforge/livereload-basic
+
+**Live Preview (Sample Website)**<br>
+https://weaponsforge.github.io/livereload-basic/
+
 
 ## Debugging Notes
 
@@ -232,4 +249,4 @@ Add the following GitHub Secrets and Variables to enable deployment to Docker Hu
 
 @weaponsforge<br>
 20200630<br>
-20241006
+20241008

@@ -9,7 +9,8 @@
   },
   "scripts": {
     "start": "node server.js",
-    "dev": "./node_modules/.bin/gulp dev"
+    "dev": "./node_modules/.bin/gulp dev",
+    "dev:docker": "set IS_DOCKER=true && npm run dev"
   },
   "keywords": [
     "gulp",
