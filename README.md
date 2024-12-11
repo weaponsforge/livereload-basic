@@ -4,9 +4,13 @@ Simple localhost static website development environment for plain HTML, CSS, and
 
 Its development static hosting and file-serving architecture are closer to traditional static web servers. Uses **Gulp** and **Browser-Sync**
 
-> [!NOTE]
+> [!NOTE] 
 > An alternate localhost static development environment using **Webpack**, also with live reload, is available at<br>
 > https://github.com/weaponsforge/livereload-webpack
+
+> [!TIP]
+> Are you using **VSCode** and **want to do live reload** but **do not want to install livereload-basic's Node dependencies** or **run it using Docker**?
+> [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) might be the tool for you. Check it out from from the Visual Studio Marketplace.
 
 ### Content
 
