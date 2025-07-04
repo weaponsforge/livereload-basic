@@ -4,7 +4,7 @@ Simple localhost static website development environment for plain HTML, CSS, and
 
 Its development static hosting and file-serving architecture are closer to traditional static web servers. Uses **Gulp** and **Browser-Sync**
 
-> [!NOTE] 
+> [!NOTE]
 > An alternate localhost static development environment using **Webpack**, also with live reload, is available at<br>
 > https://github.com/weaponsforge/livereload-webpack
 
@@ -60,15 +60,18 @@ These steps use **Node** and **Yarn** to run the development app.
 1. Run the localhost static website development environment.<br>
 `yarn dev`
 
-2.  Edit the existing static files from the **./public** directory and wait for live reload. Your updates will reflect on the web browser.
+2. Launch the local development website at:<br>
+`http://localhost:3000`
 
-3. To include new static website files on live reload:
+3.  Edit the existing static files from the **./public** directory and wait for live reload. Your updates will reflect on the web browser.
+
+4. To include new static website files on live reload:
 	- Create new static (.html, .js, .css) files inside the **./public** directory.
 	- Refresh the web browser.
 	- Restart the web server if updates don't show after a while.<br>
    `yarn dev`
 
-4. Run the production static website (does not use live reload).<br>
+5. Run the production static website (does not use live reload).<br>
 `yarn start`
 
 ## Available Scripts
@@ -94,9 +97,9 @@ This project deploys the latest **development** Docker image to Docker Hub on th
 
 https://hub.docker.com/r/weaponsforge/livereload-basic
 
-1. Pull the pre-built development Docker image using any of the two (2) options:
+1. Pull the "latest" pre-built development Docker image using any of the two (2) options:
    - Open a terminal and run:<br>
-	 `docker pull weaponsforge/livereload-basic:latest`
+	 `docker pull weaponsforge/livereload-basic`
    - Navigate to the livereload-basic root project directory, then run:<br>
 	 `docker compose -f docker-compose.dev.yml pull`
 
@@ -112,24 +115,35 @@ https://hub.docker.com/r/weaponsforge/livereload-basic
 		```
 		Navigate to the root project directory (for example, `"my-website-project"`) using a terminal, then run:
 
-		```
+		```bash
 		# On Linux OS
-		docker run -it --rm -p 3000:3000 -v $(pwd)/FILE_DIRECTORY:/opt/app/public weaponsforge/livereload-basic:latest
+		docker run -it --rm -p 3000:3000 -v $(pwd)/FILE_DIRECTORY:/opt/app/public weaponsforge/livereload-basic
 
-		# On Windows OS
-		docker run -it --rm -p 3000:3000 -v %cd%\FILE_DIRECTORY:/opt/app/public -e USE_POLLING=true weaponsforge/livereload-basic:latest
+		# On Windows OS (Command Prompt)
+		docker run -it --rm -p 3000:3000 -v %cd%\FILE_DIRECTORY:/opt/app/public -e USE_POLLING=true weaponsforge/livereload-basic
 		```
 
-      > _**TIP:**<br>
-      > Replace `-p 3000:3000` with other port bindings as needed._
+      > 💡**TIP:**<br>
+      > _To use other port bindings aside from the default `3000`:_
+      > 1. Add a `PORT` environment variable eg., `-e PORT=3003`
+      > 2. Replace `-p 3000:3000` with the `PORT` environment variable.
 
 	- Using Docker compose (2nd option):<br>
 	    - `docker compose -f docker-compose.dev.yml up`
-      - > **INFO:** Uncomment the following lines in the `docker-compose.dev.yml` file when working in a Windows host.
+      - > **INFO:** Uncomment the following lines in the `docker-compose.dev.yml` file when working in a **Windows host**.
+         ```yml
+         environment:
+           # Enable USE_POLLING if working in Windows WSL2 to enable live reload
+           - USE_POLLING=true
          ```
-         # Enable USE_POLLING if working in Windows WSL2 to enable live reload
-          environment:
-            - USE_POLLING=true
+      - > **INFO:** Enable using **other ports** - uncomment the following lines in the `docker-compose.dev.yml` and add expose the new port under the `"ports"` section.
+         ```yml
+         ports:
+           - "3002:3002"
+         environment:
+           # Use other ports aside from the 3000 default
+           # Ensure to map and expose this port under the "ports" section eg., -"3002:3002"
+           - PORT=3002
          ```
 3. Refer to the [Usage](#usage) section steps **# 2 - # 4** for local development.
 
@@ -158,7 +172,7 @@ The **development** Docker image contains Node runtime, Gulp, Browser-Sync and Y
 
 ### Production Image
 
-The **production** Docker image contains the static website running in an nginx container for minimal production website build. Build it with:
+The **production** Docker image contains the static website running in an Nginx container for minimal production website build. Build it with:
 
 `docker compose -f docker-compose.prod.yml build`
 

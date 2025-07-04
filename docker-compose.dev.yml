@@ -12,6 +12,10 @@ services:
     ports:
       - "3000:3000"
       - "9229:9229"
-    # Enable USE_POLLING if working in Windows WSL2 to enable live reload
     # environment:
+      # Enable USE_POLLING if working in Windows WSL2 to enable live reload
       # - USE_POLLING=true
+      #
+      # Use other ports aside from the default 3000
+      # Ensure to map and expose this port under the "ports" section eg., -"3002:3002"
+      # - PORT=3002
