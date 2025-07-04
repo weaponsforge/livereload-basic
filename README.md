@@ -136,7 +136,7 @@ https://hub.docker.com/r/weaponsforge/livereload-basic
            # Enable USE_POLLING if working in Windows WSL2 to enable live reload
            - USE_POLLING=true
          ```
-      - > **INFO:** Enable using **other ports** - uncomment the following lines in the `docker-compose.dev.yml` and add expose the new port under the `"ports"` section.
+      - > **INFO:** Enable using **other ports** - uncomment the following lines in the `docker-compose.dev.yml` and expose the new port under the `"ports"` section.
          ```yml
          ports:
            - "3002:3002"
