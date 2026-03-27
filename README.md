@@ -34,14 +34,14 @@ The following dependecies are used for this project. Feel free to experiment usi
 
 1. Windows 64-bit OS
 2. nvm version 1.1.12 (for Windows)
-3. NodeJS 16.14.2 installed using nvm
-   - node v20.15.0
-   - npm v10.7.0
+3. NodeJS 24.11.0 installed using nvm
+   - node v24.11.0
+   - npm v11.6.1
 4. yarn v1.22.22
    - installed using NodeJS
 3. NodeJS modules (installed using yarn)
-	- gulp v5.0.0
-	- browser-sync v3.0.3
+	- gulp v5.0.1
+	- browser-sync v3.0.4
 
 
 ## Installation
