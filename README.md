@@ -34,9 +34,9 @@ The following dependecies are used for this project. Feel free to experiment usi
 
 1. Windows 64-bit OS
 2. nvm version 1.1.12 (for Windows)
-3. NodeJS 24.11.0 installed using nvm
-   - node v24.11.0
-   - npm v11.6.1
+3. NodeJS 22.22.2 installed using nvm
+   - node v22.22.2
+   - npm v10.9.7
 4. yarn v1.22.22
    - installed using NodeJS
 3. NodeJS modules (installed using yarn)

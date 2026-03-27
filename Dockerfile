@@ -1,4 +1,4 @@
-FROM node:24.11.0-alpine AS base
+FROM node:22.22.2-alpine AS base
 RUN mkdir -p /opt/app
 WORKDIR /opt/app
 RUN adduser -S user
