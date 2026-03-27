@@ -34,14 +34,14 @@ The following dependecies are used for this project. Feel free to experiment usi
 
 1. Windows 64-bit OS
 2. nvm version 1.1.12 (for Windows)
-3. NodeJS 16.14.2 installed using nvm
-   - node v20.15.0
-   - npm v10.7.0
+3. NodeJS 22.22.2 installed using nvm
+   - node v22.22.2
+   - npm v10.9.7
 4. yarn v1.22.22
    - installed using NodeJS
 3. NodeJS modules (installed using yarn)
-	- gulp v5.0.0
-	- browser-sync v3.0.3
+	- gulp v5.0.1
+	- browser-sync v3.0.4
 
 
 ## Installation
@@ -89,6 +89,10 @@ Sets the `IS_DOCKER=true` environment variable before running the Gulp and Brows
 
 Runs a simple ExpressJS web server serving the static website app using its static middleware.
 
+### `npm run info`
+
+Logs the current development environment information.
+
 ## Usage with Docker
 
 ### Using the Pre-Built Docker Image
@@ -101,7 +105,7 @@ https://hub.docker.com/r/weaponsforge/livereload-basic
    - Open a terminal and run:<br>
 	 `docker pull weaponsforge/livereload-basic`
    - Navigate to the livereload-basic root project directory, then run:<br>
-	 `docker compose -f docker-compose.dev.yml pull`
+	 `docker compose pull`
 
 2. Run the development image.
    - Using only Docker (1st option):
@@ -129,14 +133,14 @@ https://hub.docker.com/r/weaponsforge/livereload-basic
       > 2. Replace `-p 3000:3000` with the `PORT` environment variable.
 
 	- Using Docker compose (2nd option):<br>
-	    - `docker compose -f docker-compose.dev.yml up`
-      - > **INFO:** Uncomment the following lines in the `docker-compose.dev.yml` file when working in a **Windows host**.
+	    - `docker compose up`
+      - > **INFO:** Uncomment the following lines in the `docker-compose.yml` file when working in a **Windows host**.
          ```yml
          environment:
            # Enable USE_POLLING if working in Windows WSL2 to enable live reload
            - USE_POLLING=true
          ```
-      - > **INFO:** Enable using **other ports** - uncomment the following lines in the `docker-compose.dev.yml` and expose the new port under the `"ports"` section.
+      - > **INFO:** Enable using **other ports** - uncomment the following lines in the `docker-compose.yml` and expose the new port under the `"ports"` section.
          ```yml
          ports:
            - "3002:3002"
@@ -150,17 +154,17 @@ https://hub.docker.com/r/weaponsforge/livereload-basic
 ### Local-Built Development Image
 
 1. Build the Docker image for local development.
-   - `docker compose -f docker-compose.dev.yml build`
+   - `docker compose build`
 	    > **INFO:** Do this step only once or after installing new packages in the package.json file.
    - Refer to the [Development Image](#development-image) section for more information.
 
 2. Run the development image.<br>
-`docker compose -f docker-compose.dev.yml up`
+`docker compose up`
 
 3. Refer to the [Usage](#usage) section steps **# 2 - # 3** for local development.
 
 4. Stop and exit the development container.<br>
-`docker compose -f docker-compose.dev.yml down`
+`docker compose down`
 
 ## Building Docker Images
 
@@ -168,7 +172,7 @@ https://hub.docker.com/r/weaponsforge/livereload-basic
 
 The **development** Docker image contains Node runtime, Gulp, Browser-Sync and Yarn dependencies, and the latest repository source codes for local development. Build it with:
 
-`docker compose -f docker-compose.dev.yml build`
+`docker compose build`
 
 ### Production Image
 
@@ -267,4 +271,4 @@ https://weaponsforge.github.io/livereload-basic/
 
 @weaponsforge<br>
 20200630<br>
-20241008
+20260327
