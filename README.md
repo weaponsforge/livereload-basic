@@ -89,6 +89,10 @@ Sets the `IS_DOCKER=true` environment variable before running the Gulp and Brows
 
 Runs a simple ExpressJS web server serving the static website app using its static middleware.
 
+### `npm run info`
+
+Logs the current development environment information.
+
 ## Usage with Docker
 
 ### Using the Pre-Built Docker Image
