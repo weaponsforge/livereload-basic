@@ -8,7 +8,7 @@ COPY yarn.lock ./
 
 # Install specific version of Yarn
 # directly from Alpine package manager
-RUN apk add --no-cache yarn=1.22.22-r0
+RUN corepack enable && corepack prepare yarn@1.22.22 --activate
 
 # DEVELOPMENT APP PROFILE
 FROM base AS development
