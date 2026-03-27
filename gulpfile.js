@@ -1,5 +1,8 @@
-const gulp = require('gulp')
-const browserSync = require('browser-sync').create()
+import gulp from 'gulp'
+import browserSync from 'browser-sync'
+
+browserSync.create()
+
 const root = 'public'
 const PORT = process.env.PORT || 3000
 

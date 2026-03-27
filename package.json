@@ -1,16 +1,17 @@
 {
   "name": "livereload-basic",
-  "version": "1.0.0",
+  "version": "2.1.5",
   "description": "Simple localhost static website development environment for HTML, CSS and JavaScript files with live reload using Gulp and Browser-Sync",
+  "type": "module",
   "main": "server.js",
   "engines": {
-    "node": "20.15.0",
-    "npm": "10.7.0"
+    "node": ">=22"
   },
   "scripts": {
     "start": "node server.js",
-    "dev": "./node_modules/.bin/gulp dev",
-    "dev:docker": "export IS_DOCKER=true && npm run dev"
+    "dev": "gulp dev",
+    "dev:docker": "export IS_DOCKER=true && gulp dev",
+    "info": "node scripts/envinfo"
   },
   "keywords": [
     "gulp",
@@ -24,8 +25,8 @@
   },
   "homepage": "https://github.com/weaponsforge/livereload-basic#readme",
   "devDependencies": {
-    "browser-sync": "^3.0.3",
-    "express": "^4.21.0",
-    "gulp": "^5.0.0"
+    "browser-sync": "^3.0.4",
+    "express": "^5.2.1",
+    "gulp": "^5.0.1"
   }
 }

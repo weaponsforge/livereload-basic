@@ -1,4 +1,4 @@
-FROM node:20.15.0-alpine AS base
+FROM node:22.22.2-alpine AS base
 RUN mkdir -p /opt/app
 WORKDIR /opt/app
 RUN adduser -S user
@@ -8,7 +8,7 @@ COPY yarn.lock ./
 
 # Install specific version of Yarn
 # directly from Alpine package manager
-RUN apk add --no-cache yarn=1.22.22-r0
+RUN corepack enable && corepack prepare yarn@1.22.22 --activate
 
 # DEVELOPMENT APP PROFILE
 FROM base AS development

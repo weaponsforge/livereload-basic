@@ -11,13 +11,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v6
         with:
           ref: ${{ github.event.release.tag_name }}
       - name: List files for publish
         run: cd public && ls -l -a
       - name: Deploy to Github Pages
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: public
@@ -34,15 +34,15 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Checkout the repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v6
         with:
           ref: ${{ github.event.release.tag_name }}
       - name: Set release version number
-        run: sed -i -e "s/latest/${{ github.event.release.tag_name }}/g" docker-compose.dev.yml
+        run: sed -i -e "s/latest/${{ github.event.release.tag_name }}/g" docker-compose.yml
       - name: Build Image
-        run: docker compose -f docker-compose.dev.yml build
+        run: docker compose build
       - name: Push Image to Docker Hub
-        run: docker compose -f docker-compose.dev.yml push
+        run: docker compose push
 
   docker-build-push:
     name: Push Development Image
@@ -56,12 +56,12 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Checkout the repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v6
         with:
           ref: ${{ github.event.release.tag_name }}
 
       - name: Build Image
-        run: docker compose -f docker-compose.dev.yml build
+        run: docker compose build
 
       - name: Push Image to Docker Hub
-        run: docker compose -f docker-compose.dev.yml push
+        run: docker compose push
