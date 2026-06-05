@@ -36,7 +36,7 @@ body:
       render: bash
       placeholder: |
         Platform: (eg., Linux, Windows, etc)
-        Node version: v22.22.2
+        Node version: v24.11.0
         Platform: win32
         Arch: x64
         V8 version: 13.6.233.10-node.28

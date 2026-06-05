@@ -34,15 +34,12 @@ The following dependecies are used for this project. Feel free to experiment usi
 
 1. Windows 64-bit OS
 2. nvm version 1.1.12 (for Windows)
-3. NodeJS 22.22.2 installed using nvm
-   - node v22.22.2
-   - npm v10.9.7
-4. yarn v1.22.22
-   - installed using NodeJS
-3. NodeJS modules (installed using yarn)
+3. NodeJS 24.11.0 installed using nvm
+   - node v24.11.0
+   - npm v11.6.1
+4. NodeJS modules (installed using yarn)
 	- gulp v5.0.1
 	- browser-sync v3.0.4
-
 
 ## Installation
 
@@ -50,15 +47,15 @@ The following dependecies are used for this project. Feel free to experiment usi
 `https://github.com/weaponsforge/livereload-basic.git`
 
 2. Install dependencies.<br>
-`yarn install`
+`npm install`
 
 
 ## Usage
 
-These steps use **Node** and **Yarn** to run the development app.
+These steps use **Node.js** to run the development app.
 
 1. Run the localhost static website development environment.<br>
-`yarn dev`
+`npm run dev`
 
 2. Launch the local development website at:<br>
 `http://localhost:3000`
@@ -69,10 +66,10 @@ These steps use **Node** and **Yarn** to run the development app.
 	- Create new static (.html, .js, .css) files inside the **./public** directory.
 	- Refresh the web browser.
 	- Restart the web server if updates don't show after a while.<br>
-   `yarn dev`
+   `npm run dev`
 
 5. Run the production static website (does not use live reload).<br>
-`yarn start`
+`npm start`
 
 ## Available Scripts
 
