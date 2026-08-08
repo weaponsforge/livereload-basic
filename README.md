@@ -10,7 +10,7 @@ Its development static hosting and file-serving architecture are closer to tradi
 
 > [!TIP]
 > Are you using **VSCode** and **want to do live reload** but **do not want to install livereload-basic's Node dependencies** or **run it using Docker**?
-> [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) might be the tool for you. Check it out from from the Visual Studio Marketplace.
+> [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) might be the tool for you. Check it out from the Visual Studio Marketplace.
 
 ### Content
 
