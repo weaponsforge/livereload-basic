@@ -1,0 +1,22 @@
+.about-me {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 16px;
+  margin-top: 32px;
+  border-radius: 16px;
+  color: #FFF;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.about-me__btn-container {
+  display: flex;
+  justify-content: center;
+}
+.about-me__btn-container button {
+  padding: 16px;
+  border: 1px solid sandybrown;
+  border-radius: 16px;
+  font-weight: bold;
+}
+
+/*# sourceMappingURL=style.css.map */
