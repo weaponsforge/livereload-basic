@@ -59,7 +59,8 @@ The following dependecies are used for this project. Feel free to experiment usi
 ### Environment Variables
 
 | Variable Name | Description |
-| EXTRA_WATCHLIST | (Optional) Extra comma-separated file extensions to watch for changes in the `"/public"` directory eg., `png,jpg,svg`. It adds extensions to the default watchlist - It does not replace the default supported extensions (`html`, `css` and `js`). |
+| --- | --- |
+| EXTRA_WATCHLIST | (Optional) Extra comma-separated file extensions to watch for changes in the `"/public"` directory eg., `png,jpg,svg`. It adds extensions to the default watchlist - it does not replace the default supported extensions (`html`, `css` and `js`). |
 | USE_POLLING | Enables filesystem polling for file-change detection. Useful when running the development container with a Windows host. |
 | PORT | Port used by the development server. Defaults to `3000`. |
 
