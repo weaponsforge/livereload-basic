@@ -1,6 +1,6 @@
 {
   "name": "livereload-basic",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "Simple localhost static website development environment for HTML, CSS and JavaScript files with live reload using Gulp and Browser-Sync",
   "type": "module",
   "main": "server.js",
@@ -10,6 +10,7 @@
   "scripts": {
     "start": "node server.js",
     "dev": "node --env-file-if-exists=.env ./node_modules/gulp/bin/gulp.js dev",
+    "build": "sass public/",
     "dev:docker": "export IS_DOCKER=true && npm run dev",
     "info": "node scripts/envinfo"
   },

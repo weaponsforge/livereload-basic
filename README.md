@@ -112,6 +112,10 @@ Sets the `IS_DOCKER=true` environment variable before running the Gulp and Brows
 
 Runs a simple ExpressJS web server serving the static website app using its static middleware.
 
+### `npm run build`
+
+Builds `.css` files from `.scss` files within the `"/public"` directory.
+
 ### `npm run info`
 
 Logs the current development environment information.
