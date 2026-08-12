@@ -1,0 +1,30 @@
+// ─── Variables ────────────────────────────
+
+$orange:         #F2B70D;
+$white:          #FFF;
+$pSize:          16px;
+
+// ─── Sections ────────────────────────────
+
+.about-me {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: $pSize;
+  margin-top: 32px;
+  border-radius: $pSize;
+  color: $white;
+  background-color: rgba(255, 255, 255, 0.2);
+
+  &__btn-container {
+    display: flex;
+    justify-content: center;
+
+    button {
+      padding: $pSize;
+      border: 1px solid sandybrown;
+      border-radius: $pSize;
+      font-weight: bold;
+    }
+  }
+}

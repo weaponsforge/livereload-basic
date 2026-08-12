@@ -20,8 +20,9 @@ jobs:
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: public
+          publish_dir: ./public
           publish_branch: gh-pages
+          exclude_assets: '*.scss'
 
   docker-build-push-tag:
     name: Push Tagged Image

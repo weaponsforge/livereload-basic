@@ -1,6 +1,6 @@
 ## livereload-basic
 
-Simple localhost static website development environment for plain HTML, CSS, and JavaScript files with live reload.
+A lightweight local development environment for plain HTML, CSS, and JavaScript websites with live reload and Sass support.
 
 Its development static hosting and file-serving architecture are closer to traditional static web servers. Uses **Gulp** and **Browser-Sync**
 
@@ -10,12 +10,12 @@ Its development static hosting and file-serving architecture are closer to tradi
 
 > [!TIP]
 > Are you using **VSCode** and **want to do live reload** but **do not want to install livereload-basic's Node dependencies** or **run it using Docker**?
-> [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) might be the tool for you. Check it out from from the Visual Studio Marketplace.
+> [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) might be the tool for you. Check it out from the Visual Studio Marketplace.
 
 ### Content
 
 - [Dependencies](#dependencies)
-- [Installation](#nstallation)
+- [Installation](#installation)
 - [Usage](#usage)
 - [Available Scripts](#available-scripts)
 - [Usage with Docker](#usage-with-docker)
@@ -34,15 +34,12 @@ The following dependecies are used for this project. Feel free to experiment usi
 
 1. Windows 64-bit OS
 2. nvm version 1.1.12 (for Windows)
-3. NodeJS 22.22.2 installed using nvm
-   - node v22.22.2
-   - npm v10.9.7
-4. yarn v1.22.22
-   - installed using NodeJS
-3. NodeJS modules (installed using yarn)
+3. NodeJS 24.11.0 installed using nvm
+   - node v24.11.0
+   - npm v11.6.1
+4. NodeJS modules (installed using npm)
 	- gulp v5.0.1
 	- browser-sync v3.0.4
-
 
 ## Installation
 
@@ -50,15 +47,30 @@ The following dependecies are used for this project. Feel free to experiment usi
 `https://github.com/weaponsforge/livereload-basic.git`
 
 2. Install dependencies.<br>
-`yarn install`
+`npm install`
 
+3. To watch for file changes other than the default `.html`, `.css` and `.js` files in the `"/public"` directory, create a `.env` file from the `.env.example` file. Append additional file extensions in the `EXTRA_WATCHLIST` variable as comma-separated values eg.,
+
+   ```text
+   png,jpg,svg
+   ```
+
+### Environment Variables
+
+| Variable Name | Description |
+| --- | --- |
+| EXTRA_WATCHLIST | (Optional) Extra comma-separated file extensions to watch for changes in the `"/public"` directory eg., `png,jpg,svg`. It adds extensions to the default watchlist - it does not replace the default supported extensions (`html`, `css` and `js`). |
+| USE_POLLING | Enables filesystem polling for file-change detection. Useful when running the development container with a Windows host. |
+| PORT | Port used by the development server. Defaults to `3000`. |
 
 ## Usage
 
-These steps use **Node** and **Yarn** to run the development app.
+These steps use **Node.js** to run the development app.
+
+#### A. Editing CSS Files (`.css`)
 
 1. Run the localhost static website development environment.<br>
-`yarn dev`
+`npm run dev`
 
 2. Launch the local development website at:<br>
 `http://localhost:3000`
@@ -69,10 +81,21 @@ These steps use **Node** and **Yarn** to run the development app.
 	- Create new static (.html, .js, .css) files inside the **./public** directory.
 	- Refresh the web browser.
 	- Restart the web server if updates don't show after a while.<br>
-   `yarn dev`
+   `npm run dev`
 
 5. Run the production static website (does not use live reload).<br>
-`yarn start`
+`npm start`
+
+#### A. Editing SASS Files (`.scss`)
+
+1. Create a `.scss` file under the **./public** directory eg., `style.scss`
+2. Include the **CSS** filename of the `.scss` file you created the the `<head>` section of `index.html`.
+
+   ```html
+   <!-- CSS file generated from style.scss -->
+   <link href="style.css" rel="stylesheet" type="text/css">
+   ```
+3. Proceed to run and edit SCSS files from [A. Editing CSS Files - step 3](#a-editing-css-files-css)
 
 ## Available Scripts
 
@@ -113,19 +136,33 @@ https://hub.docker.com/r/weaponsforge/livereload-basic
 
 		```
 		├─ my-website-project
+		│   ├─ .env             # optional
 		│   ├─ public
 		│   ├─── index.html
+		│   ├─── main.css       # optional
+		│   ├─── styles.scss    # optional
 		│   ├─── ...
 		```
+      > 💡 **INFO**: If you want to watch file changes for other files besides HTML, CSS, and JavaScript, create a `.env` file containing an `EXTRA_WATCHLIST` variable. See [Installation - # 2](#installation) for more information.
+
 		Navigate to the root project directory (for example, `"my-website-project"`) using a terminal, then run:
 
 		```bash
 		# On Linux OS
-		docker run -it --rm -p 3000:3000 -v $(pwd)/FILE_DIRECTORY:/opt/app/public weaponsforge/livereload-basic
+		docker run --rm -p 3000:3000 -v $(pwd)/FILE_DIRECTORY:/opt/app/public weaponsforge/livereload-basic
 
 		# On Windows OS (Command Prompt)
-		docker run -it --rm -p 3000:3000 -v %cd%\FILE_DIRECTORY:/opt/app/public -e USE_POLLING=true weaponsforge/livereload-basic
+		docker run --rm -p 3000:3000 -v %cd%\FILE_DIRECTORY:/opt/app/public -e USE_POLLING=true weaponsforge/livereload-basic
 		```
+
+      Alternate (no `.env` file with `EXTRA_WATCHLIST`)
+
+      ```bash
+		# On Windows OS (Command Prompt)
+		docker run --rm -p 3000:3000 -v %cd%\FILE_DIRECTORY:/opt/app/public -e USE_POLLING=true -e EXTRA_WATCHLIST=png,jpg weaponsforge/livereload-basic
+      ```
+
+
 
       > 💡**TIP:**<br>
       > _To use other port bindings aside from the default `3000`:_
@@ -134,11 +171,10 @@ https://hub.docker.com/r/weaponsforge/livereload-basic
 
 	- Using Docker compose (2nd option):<br>
 	    - `docker compose up`
-      - > **INFO:** Uncomment the following lines in the `docker-compose.yml` file when working in a **Windows host**.
-         ```yml
-         environment:
-           # Enable USE_POLLING if working in Windows WSL2 to enable live reload
-           - USE_POLLING=true
+      - > **INFO:** Create a `.env` file containing `USE_POLLING=true` when working in a **Windows host**. See the `.env.example` file for information.
+         ```txt
+         # Uncomment this line if working in Docker on Windows OS host to enable hot reload
+         USE_POLLING=true
          ```
       - > **INFO:** Enable using **other ports** - uncomment the following lines in the `docker-compose.yml` and expose the new port under the `"ports"` section.
          ```yml
@@ -170,7 +206,7 @@ https://hub.docker.com/r/weaponsforge/livereload-basic
 
 ### Development Image
 
-The **development** Docker image contains Node runtime, Gulp, Browser-Sync and Yarn dependencies, and the latest repository source codes for local development. Build it with:
+The **development** Docker image contains Node runtime, Gulp, and Browser-Sync dependencies, and the latest repository source codes for local development. Build it with:
 
 `docker compose build`
 
@@ -180,7 +216,11 @@ The **production** Docker image contains the static website running in an Nginx 
 
 `docker compose -f docker-compose.prod.yml build`
 
-## Deployment with GitHub Actions
+<br>
+
+## Maintainer Documentation
+
+### Deployment with GitHub Actions
 
 This repository deploys the **local development** Docker image to Docker Hub on the creation of new Release/Tags.
 
