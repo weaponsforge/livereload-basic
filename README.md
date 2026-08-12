@@ -60,7 +60,7 @@ The following dependecies are used for this project. Feel free to experiment usi
 | Variable Name | Description |
 | --- | --- |
 | EXTRA_WATCHLIST | (Optional) Extra comma-separated file extensions to watch for changes in the `"/public"` directory eg., `png,jpg,svg`. It adds extensions to the default watchlist - it does not replace the default supported extensions (`html`, `css` and `js`). |
-| USE_POLLING | Enables filesystem polling for file-change detection. Useful when running the development container with a Windows host. |
+| USE_POLLING | Enables filesystem polling for file-change detection. Useful when running the development container with a Windows host. Defaults to `false`. |
 | PORT | Port used by the development server. Defaults to `3000`. |
 
 ## Usage
@@ -86,7 +86,7 @@ These steps use **Node.js** to run the development app.
 5. Run the production static website (does not use live reload).<br>
 `npm start`
 
-#### A. Editing SASS Files (`.scss`)
+#### B. Editing SASS Files (`.scss`)
 
 1. Create a `.scss` file under the **./public** directory eg., `style.scss`
 2. Include the **CSS** filename of the `.scss` file you created in the `<head>` section of `index.html`.
@@ -147,16 +147,16 @@ https://hub.docker.com/r/weaponsforge/livereload-basic
 		│   ├─── styles.scss    # optional
 		│   ├─── ...
 		```
-      > 💡 **INFO**: If you want to watch file changes for other files besides HTML, CSS, and JavaScript, create a `.env` file containing an `EXTRA_WATCHLIST` variable. See [Installation - # 2](#installation) for more information.
+      > 💡 **INFO**: If you want to watch file changes for other files besides HTML, CSS, and JavaScript, create a `.env` file containing an `EXTRA_WATCHLIST` variable. See [Installation - # 3](#installation) for more information.
 
 		Navigate to the root project directory (for example, `"my-website-project"`) using a terminal, then run:
 
 		```bash
 		# On Linux OS
-		docker run --rm -p 3000:3000 -v $(pwd)/FILE_DIRECTORY:/opt/app/public weaponsforge/livereload-basic
+		docker run --rm -p 3000:3000 -v $(pwd)/FILE_DIRECTORY:/opt/app/public --env-file ./.env weaponsforge/livereload-basic
 
 		# On Windows OS (Command Prompt)
-		docker run --rm -p 3000:3000 -v %cd%\FILE_DIRECTORY:/opt/app/public -e USE_POLLING=true weaponsforge/livereload-basic
+		docker run --rm -p 3000:3000 -v %cd%\FILE_DIRECTORY:/opt/app/public --env-file ./.env -e USE_POLLING=true weaponsforge/livereload-basic
 		```
 
       Alternate (no `.env` file with `EXTRA_WATCHLIST`)
