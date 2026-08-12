@@ -118,10 +118,10 @@ https://hub.docker.com/r/weaponsforge/livereload-basic
 
 		```bash
 		# On Linux OS
-		docker run -it --rm -p 3000:3000 -v $(pwd)/FILE_DIRECTORY:/opt/app/public weaponsforge/livereload-basic
+		docker run --rm -p 3000:3000 -v $(pwd)/FILE_DIRECTORY:/opt/app/public weaponsforge/livereload-basic
 
 		# On Windows OS (Command Prompt)
-		docker run -it --rm -p 3000:3000 -v %cd%\FILE_DIRECTORY:/opt/app/public -e USE_POLLING=true weaponsforge/livereload-basic
+		docker run --rm -p 3000:3000 -v %cd%\FILE_DIRECTORY:/opt/app/public -e USE_POLLING=true weaponsforge/livereload-basic
 		```
 
       > 💡**TIP:**<br>
