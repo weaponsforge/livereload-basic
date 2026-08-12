@@ -89,7 +89,7 @@ These steps use **Node.js** to run the development app.
 #### A. Editing SASS Files (`.scss`)
 
 1. Create a `.scss` file under the **./public** directory eg., `style.scss`
-2. Include the **CSS** filename of the `.scss` file you created the the `<head>` section of `index.html`.
+2. Include the **CSS** filename of the `.scss` file you created in the `<head>` section of `index.html`.
 
    ```html
    <!-- CSS file generated from style.scss -->
