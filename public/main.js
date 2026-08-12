@@ -3,5 +3,5 @@ function init () {
 }
 
 function clickme () {
-  alert('i was clicked!')
+  alert('Woof! 🐶')
 }

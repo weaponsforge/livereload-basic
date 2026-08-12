@@ -51,6 +51,7 @@ body:
       options:
         - 'Not sure'
         - 'Live reload'
+        - 'Sass (.scss)'
         - 'Express web server'
         - 'Docker'
         - 'Others'
