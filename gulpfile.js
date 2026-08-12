@@ -1,5 +1,6 @@
 import gulp from 'gulp'
 import browserSync from 'browser-sync'
+import { loadWatchlist } from './scripts/watchlist.js'
 
 browserSync.create()
 
@@ -15,24 +16,19 @@ const server = function () {
   })
 }
 
+// Load supported file extensions
+const fileExtensions = loadWatchlist()
+const fileWatchList = fileExtensions.map(file => `${root}/**/*.${file}`)
+console.log(`[LOG] watching files: ${fileExtensions.toString()}\n`)
+
 // Files to watch for changes then reload browser
+// Use gulp interval and polling if working in Windows WSL2 to enable hot reload
 const watch = function () {
-  const html = `${root}/**/*.html`
-  const css = `${root}/**/*.css`
-  const js = `${root}/**/*.js`
-
-  // Use gulp interval and polling if working in Windows WSL2 to enable hot reload
-  gulp.watch(html,
-    (process.env.USE_POLLING && { interval: 1000, usePolling: true })
-  ).on('change', browserSync.reload)
-
-  gulp.watch(css,
-    (process.env.USE_POLLING && { interval: 1000, usePolling: true })
-  ).on('change', browserSync.reload)
-
-  gulp.watch(js,
-    (process.env.USE_POLLING && { interval: 1000, usePolling: true })
-  ).on('change', browserSync.reload)
+  fileWatchList.forEach(file => {
+    gulp.watch(file,
+      (process.env.USE_POLLING && { interval: 1000, usePolling: true })
+    ).on('change', browserSync.reload)
+  })
 }
 
 // Gulp tasks
