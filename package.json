@@ -10,6 +10,7 @@
   "scripts": {
     "start": "node server.js",
     "dev": "node --env-file-if-exists=.env ./node_modules/gulp/bin/gulp.js dev",
+    "build": "sass public/",
     "dev:docker": "export IS_DOCKER=true && npm run dev",
     "info": "node scripts/envinfo"
   },
