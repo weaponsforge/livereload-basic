@@ -1,3 +1,12 @@
+// Default supported files watch list
+export const FILES = {
+  HTML: 'html',
+  CSS: 'css',
+  JS: 'js',
+  SCSS: 'scss'
+}
+
+export const FILES_LIST = Object.values(FILES)
 
 /**
  * Loads list of file extensions to watch for changes
@@ -5,7 +14,6 @@
  * @returns {string[]} List of file extensions
  */
 export const loadWatchlist = () => {
-  const defaultFiles = ['html', 'css', 'js']
   const files = process.env.EXTRA_WATCHLIST ?? ''
 
   const filesList = files
@@ -13,6 +21,5 @@ export const loadWatchlist = () => {
     .map(item => item.trim())
     .filter(item => item !== '')
 
-
-  return Array.from(new Set([...defaultFiles, ...filesList]))
+  return Array.from(new Set([...FILES_LIST, ...filesList]))
 }

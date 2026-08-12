@@ -1,7 +1,6 @@
 ## livereload-basic
 
-A lightweight local development environment for plain HTML, CSS,
-and JavaScript websites with live reload.
+A lightweight local development environment for plain HTML, CSS, and JavaScript websites with live reload and Sass support.
 
 Its development static hosting and file-serving architecture are closer to traditional static web servers. Uses **Gulp** and **Browser-Sync**
 
@@ -68,6 +67,8 @@ The following dependecies are used for this project. Feel free to experiment usi
 
 These steps use **Node.js** to run the development app.
 
+#### A. Editing CSS Files (`.css`)
+
 1. Run the localhost static website development environment.<br>
 `npm run dev`
 
@@ -84,6 +85,17 @@ These steps use **Node.js** to run the development app.
 
 5. Run the production static website (does not use live reload).<br>
 `npm start`
+
+#### A. Editing SASS Files (`.scss`)
+
+1. Create a `.scss` file under the **./public** directory eg., `style.scss`
+2. Include the **CSS** filename of the `.scss` file you created the the `<head>` section of `index.html`.
+
+   ```html
+   <!-- CSS file generated from style.scss -->
+   <link href="style.css" rel="stylesheet" type="text/css">
+   ```
+3. Proceed to run and edit SCSS files from [A. Editing CSS Files - step 3](#a-editing-css-files-css)
 
 ## Available Scripts
 
@@ -127,6 +139,8 @@ https://hub.docker.com/r/weaponsforge/livereload-basic
 		│   ├─ .env             # optional
 		│   ├─ public
 		│   ├─── index.html
+		│   ├─── main.css       # optional
+		│   ├─── styles.scss    # optional
 		│   ├─── ...
 		```
       > 💡 **INFO**: If you want to watch file changes for other files besides HTML, CSS, and JavaScript, create a `.env` file containing an `EXTRA_WATCHLIST` variable. See [Installation - # 2](#installation) for more information.
