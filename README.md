@@ -49,7 +49,7 @@ The following dependecies are used for this project. Feel free to experiment usi
 2. Install dependencies.<br>
 `npm install`
 
-3. To watch for file changes other than the default `.html`, `.css` and `.js` files in the `"/public"` directory, create a `.env` file from the `.env.example` file. Append additional file extensions in the `EXTRA_WATCHLIST` variable as comma-separated values eg.,
+3. To watch for file changes other than the default `.html`, `.css`, `.js`, and `.scss` files in the `"/public"` directory, create a `.env` file from the `.env.example` file. Append additional file extensions in the `EXTRA_WATCHLIST` variable as comma-separated values eg.,
 
    ```text
    png,jpg,svg
