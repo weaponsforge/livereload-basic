@@ -1,6 +1,6 @@
 {
   "name": "livereload-basic",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "description": "Simple localhost static website development environment for HTML, CSS and JavaScript files with live reload using Gulp and Browser-Sync",
   "type": "module",
   "main": "server.js",
@@ -30,6 +30,6 @@
     "express": "^5.2.1",
     "gulp": "^5.0.1",
     "gulp-sass": "^6.0.1",
-    "sass": "^1.102.0"
+    "sass": "^1.105.1"
   }
 }
